@@ -23,7 +23,7 @@ object Day01 {
             }
         }
 
-        println("Number of times the dial pointed at position 0: $zeroCounter")
+        println("Day 1, Part 1: Number of times the dial pointed at position 0 at the end: [$zeroCounter]")
     }
 
     fun part2() {
@@ -35,10 +35,10 @@ object Day01 {
         rotations.forEach { rotation ->
             val clickedOntoZero = dial.rotateAndCountZero(rotation)
             zeroCounter += clickedOntoZero
-            println("Processed rotation [$rotation], current position is [${dial.position}], clicked onto zero [$clickedOntoZero] times, zero counter: [$zeroCounter].")
+//            println("Processed rotation [$rotation], current position is [${dial.position}], clicked onto zero [$clickedOntoZero] times, zero counter: [$zeroCounter].")
         }
 
-        println("Number of times the dial clicked onto position 0: $zeroCounter")
+        println("Day 1, Part 2: Number of times the dial clicked onto position 0: [$zeroCounter]")
     }
 
     private fun readRotationsFromFile(): List<Rotation> =
