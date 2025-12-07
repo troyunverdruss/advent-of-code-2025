@@ -1,10 +1,8 @@
 package dev.yort
 
-import java.io.File
-
 object Day04 {
     fun part1() {
-        val grid = loadGridFromFile()
+        val grid = loadGridFromFile("inputs/Day04.txt")
 
         val rollsWithFewerThan4Neighbors = grid.filter { it.value == '@' }
             .count { entry ->
@@ -19,7 +17,7 @@ object Day04 {
     }
 
     fun part2() {
-        val grid = loadGridFromFile()
+        val grid = loadGridFromFile("inputs/Day04.txt")
 
         val currentGrid = grid.toMutableMap()
         var totalRollsRemoved = 0
@@ -44,17 +42,5 @@ object Day04 {
         }
 
         println("Day 4, Part 2: It's possible to remove a total of [$totalRollsRemoved] rolls")
-    }
-
-    private fun loadGridFromFile(): Map<Point, Char> {
-        val inputLines = File("inputs/Day04.txt").readLines().map { line ->
-            line.toCharArray().toList()
-        }
-        val grid = (0..inputLines.lastIndex).flatMap { y ->
-            (0..<inputLines[y].size).map { x ->
-                Point(x.toLong(), y.toLong()) to inputLines[y][x]
-            }
-        }.toMap()
-        return grid
     }
 }
