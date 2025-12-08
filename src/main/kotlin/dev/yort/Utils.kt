@@ -1,6 +1,7 @@
 package dev.yort
 
 import java.io.File
+import kotlin.collections.map
 
 data class Point(val x: Long, val y: Long) {
     operator fun plus(other: Point): Point {
@@ -31,12 +32,18 @@ data class Point(val x: Long, val y: Long) {
 }
 
 fun loadGridFromFile(filename: String): Map<Point, Char> {
-    val inputLines = File(filename).readLines().map { line ->
+    val lines = File(filename).readLines()
+    return parseGrid(lines)
+}
+
+fun parseGrid(lines: List<String>): Map<Point, Char> {
+    val input = lines.map { line ->
         line.trim().toCharArray().toList()
     }
-    val grid = (0..inputLines.lastIndex).flatMap { y ->
-        (0..<inputLines[y].size).map { x ->
-            Point(x.toLong(), y.toLong()) to inputLines[y][x]
+
+    val grid = (0..input.lastIndex).flatMap { y ->
+        (0..<input[y].size).map { x ->
+            Point(x.toLong(), y.toLong()) to input[y][x]
         }
     }.toMap()
     return grid
