@@ -1,11 +1,12 @@
 package dev.yort
 
 import java.io.File
-import kotlin.collections.map
+import kotlin.math.pow
+import kotlin.math.sqrt
 
-data class Point(val x: Long, val y: Long) {
+data class Point(val x: Long, val y: Long, val z: Long = 0) {
     operator fun plus(other: Point): Point {
-        return Point(this.x + other.x, this.y + other.y)
+        return Point(this.x + other.x, this.y + other.y, this.z + other.z)
     }
 
     fun adjacentNeighbors(): List<Point> {
@@ -30,6 +31,12 @@ data class Point(val x: Long, val y: Long) {
         val ADJACENT = DIRECTLY_ADJACENT + DIAGONALLY_ADJACENT
     }
 }
+
+fun distance(a: Point, b: Point): Double =
+    sqrt(
+        (b.x.toDouble() - a.x.toDouble()).pow(2.0) + (b.y.toDouble() - a.y.toDouble()).pow(2.0) + (b.z.toDouble() - a.z.toDouble()).pow(2.0)
+    )
+
 
 fun loadGridFromFile(filename: String): Map<Point, Char> {
     val lines = File(filename).readLines()
