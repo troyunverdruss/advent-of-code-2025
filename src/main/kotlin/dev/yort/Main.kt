@@ -19,4 +19,5 @@ fun main() {
     Day07.part2()
     Day08.part1()
     Day08.part2()
+    Day09.part1()
 }

@@ -29,6 +29,21 @@ data class Point(val x: Long, val y: Long, val z: Long = 0) {
         )
 
         val ADJACENT = DIRECTLY_ADJACENT + DIAGONALLY_ADJACENT
+
+        fun fromString(line: String): Point {
+            val parts = line.split(",")
+            if (parts.size != 2 && parts.size != 3) error("Unknown number of coordinates: [$parts]")
+
+            return Point(
+                x = parts[0].toLong(),
+                y = parts[1].toLong(),
+                z = if (parts.size == 3) {
+                    parts[2].toLong()
+                } else {
+                    0L
+                }
+            )
+        }
     }
 }
 
