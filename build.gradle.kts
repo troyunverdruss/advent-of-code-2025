@@ -1,5 +1,6 @@
 plugins {
     kotlin("jvm") version "2.2.20"
+    application
 }
 
 group = "dev.yort"
@@ -18,4 +19,8 @@ tasks.test {
 }
 kotlin {
     jvmToolchain(21)
+}
+
+application {
+    mainClass = "dev.yort.MainKt"
 }

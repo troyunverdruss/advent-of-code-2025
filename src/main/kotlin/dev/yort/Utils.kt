@@ -18,14 +18,18 @@ data class Point(val x: Long, val y: Long, val z: Long = 0) {
         val DOWN = Point(0, 1)
         val LEFT = Point(-1, 0)
         val RIGHT = Point(1, 0)
+        val UP_LEFT = UP + LEFT
+        val UP_RIGHT = UP + RIGHT
+        val DOWN_LEFT = DOWN + LEFT
+        val DOWN_RIGHT = DOWN + RIGHT
 
         val DIRECTLY_ADJACENT = listOf(UP, DOWN, LEFT, RIGHT)
 
         val DIAGONALLY_ADJACENT = listOf(
-            Point(-1, -1), // up left
-            Point(1, -1), // up right
-            Point(-1, 1), // down left
-            Point(1, 1), // down right
+            UP_LEFT,
+            UP_RIGHT,
+            DOWN_LEFT,
+            DOWN_RIGHT,
         )
 
         val ADJACENT = DIRECTLY_ADJACENT + DIAGONALLY_ADJACENT
