@@ -1,7 +1,5 @@
 package dev.yort
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 fun main() {
     Day01.part1()
     Day01.part2()
@@ -22,7 +20,8 @@ fun main() {
     Day09.part1()
     Day09.part2()
     Day10.part1()
-//    Day10.part2()
+    Day10Part2Take4.run()
     Day11.part1()
     Day11.part2()
+    Day12.part1()
 }
