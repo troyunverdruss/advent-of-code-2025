@@ -79,6 +79,21 @@ fun findGridEntry(grid: Map<Point, Char>, value: Char): Map.Entry<Point, Char> =
     grid.filter { it.value == value }.entries.first()
 
 fun printGrid(grid: Map<Point, Char>) {
+    val gridMinMax = findMinMax(grid)
+    val minx = gridMinMax.minx
+    val miny = gridMinMax.miny
+    val maxx = gridMinMax.maxx
+    val maxy = gridMinMax.maxy
+
+    (miny..maxy).forEach { y ->
+        (minx..maxx).forEach { x ->
+            print(grid[Point(x, y)])
+        }
+        println()
+    }
+}
+
+fun findMinMax(grid: Map<Point, Char>): GridMinMax {
     var minx = 0L
     var miny = 0L
     var maxx = 0L
@@ -87,10 +102,13 @@ fun printGrid(grid: Map<Point, Char>) {
         if (it.key.x < minx) minx = it.key.x else if (it.key.x > maxx) maxx = it.key.x
         if (it.key.y < miny) miny = it.key.y else if (it.key.y > maxy) maxy = it.key.y
     }
-    (miny..maxy).forEach { y ->
-        (minx..maxx).forEach { x ->
-            print(grid[Point(x, y)])
-        }
-        println()
-    }
+
+    return GridMinMax(minx, miny, maxx, maxy)
 }
+
+data class GridMinMax(
+    val minx: Long = 0L,
+    val miny: Long = 0L,
+    val maxx: Long = 0L,
+    val maxy: Long = 0L,
+)
