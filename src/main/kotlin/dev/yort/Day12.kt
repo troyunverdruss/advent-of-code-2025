@@ -10,7 +10,7 @@ object Day12 {
 
         val plausible = regions.count { region -> isPlausible(shapes, region) }
         val guaranteed = regions.count { region -> isGuaranteed(shapes, region) }
-
+️
         if (plausible == guaranteed) {
             println("Day 12, Part 1: There are [$plausible] valid regions")
         } else {
